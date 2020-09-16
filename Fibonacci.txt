@@ -97,6 +97,23 @@ public class Fibanocci
 		System.out.println("Enter the number of terms in series");
 		int numOfTerms = sc.nextInt();
 		
+		if(numOfTerms <= 0)
+		{
+			System.out.println("Enter a positive value");
+		}
+		else if(numOfTerms == 1)
+		{
+			System.out.println("Fibanocci series with "+numOfTerms+ " terms:");
+			System.out.println(term1);
+		}
+		
+		else if(numOfTerms == 2)
+		{
+			System.out.println("Fibanocci series with "+numOfTerms+ " terms:");
+			System.out.println(term1+"\t"+term2);
+		}
+		else
+		{
 		System.out.println("----------------------------------------------------------------------");
 		
 		Fibanocci fs = new Fibanocci();
@@ -116,6 +133,7 @@ public class Fibanocci
 		System.out.println();
 		System.out.println("Time taken for executing recursive function : "+(end - start)+" nanoseconds");
 		
+		}
 	
 	}
 	

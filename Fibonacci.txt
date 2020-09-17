@@ -1,0 +1,140 @@
+package practice;
+
+import java.util.*;
+
+public class Fibanocci 
+{
+	
+	public void seriesForLoop(int term1, int term2, int terms)
+	{
+		
+		System.out.println("Fibanocci series with "+terms+ " terms using for loop:");
+		System.out.println();
+		System.out.print(term1+"\t"+term2+"\t");
+		
+		long start = System.nanoTime();
+		
+		for(int i = 0; i < (terms - 2); i++)
+		{
+			int nextTerm = term1 + term2;
+			System.out.print(nextTerm+"\t");
+			term1 = term2;
+			term2 = nextTerm;
+		}
+		long end = System.nanoTime();
+		System.out.println();
+		System.out.println("Time taken for executing for loop : "+(end - start)+" nanoseconds");
+		System.out.println("----------------------------------------------------------------------");
+	}
+	
+	public void seriesWhileLoop(int term1, int term2, int terms)
+	{
+		int i = 0;
+	System.out.println("Fibanocci series with "+terms+ " terms using while loop:");
+	System.out.println();
+	System.out.print(term1+"\t"+term2+"\t");
+	
+	long start = System.nanoTime();
+	
+	while(i < (terms-2))
+	{
+		int nextTerm = term1 + term2;
+		System.out.print(nextTerm+"\t");
+		term1 = term2;
+		term2 = nextTerm;
+		i++;
+	}
+	long end = System.nanoTime();
+	System.out.println();
+	System.out.println("Time taken for executing while loop : "+(end - start)+" nanoseconds");
+	System.out.println("----------------------------------------------------------------------");
+	}
+	
+	public void seriesDoWhileLoop(int term1,int term2,int terms)
+	{
+		int k =0;
+		System.out.println("Fibanocci series with "+terms+ " terms using do-while loop:");
+		System.out.println();
+		System.out.print(term1+"\t"+term2+"\t");
+		
+		long start = System.nanoTime();
+		
+		do
+		{
+			int nextTerm = term1 + term2;
+			System.out.print(nextTerm+"\t");
+			term1 = term2;
+			term2 = nextTerm;
+			k++;
+			
+		} while ( k < (terms - 2));
+		long end = System.nanoTime();
+		System.out.println();
+		System.out.println("Time taken for executing do-while loop : "+(end - start)+" nanoseconds");
+		System.out.println("----------------------------------------------------------------------");
+	}
+	
+	public int seriesRecursion(int terms)
+	{
+		if (terms <= 1)
+		{
+			return terms;
+		}
+		else {
+			
+			return ((seriesRecursion(terms -1))+(seriesRecursion(terms-2)));
+		}
+	}
+		
+	public static void main (String args[])
+	{
+		int term1 = 0;
+		int term2 = 1;
+		int j=0;
+
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the number of terms in series");
+		int numOfTerms = sc.nextInt();
+		
+		if(numOfTerms <= 0)
+		{
+			System.out.println("Enter a positive value");
+		}
+		else if(numOfTerms == 1)
+		{
+			System.out.println("Fibanocci series with "+numOfTerms+ " terms:");
+			System.out.println(term1);
+		}
+		
+		else if(numOfTerms == 2)
+		{
+			System.out.println("Fibanocci series with "+numOfTerms+ " terms:");
+			System.out.println(term1+"\t"+term2);
+		}
+		else
+		{
+		System.out.println("----------------------------------------------------------------------");
+		
+		Fibanocci fs = new Fibanocci();
+		
+		fs.seriesForLoop(term1,term2,numOfTerms);
+		fs.seriesWhileLoop(term1,term2,numOfTerms);
+		fs.seriesDoWhileLoop(term1,term2,numOfTerms);
+		
+		long start = System.nanoTime();
+		
+		for(int i = 0; i < (numOfTerms); i++)
+		{
+			System.out.print(fs.seriesRecursion(j)+"\t");
+			j++;
+		}
+		long end = System.nanoTime();
+		System.out.println();
+		System.out.println("Time taken for executing recursive function : "+(end - start)+" nanoseconds");
+		
+		}
+	
+	}
+	
+}

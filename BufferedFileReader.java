@@ -30,7 +30,7 @@ public class BufferedFileReader {
             bout.flush();
         }
         catch(IOException ex) {
-            System.err.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         //closing all the objects after the process
         finally {

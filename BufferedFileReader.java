@@ -21,10 +21,10 @@ public class BufferedFileReader {
             bin = new BufferedInputStream( fin);
             fout = new FileOutputStream("C:\\Users\\user\\Downloads\\BTS-DNA(copy).mp4");
             bout = new BufferedOutputStream(fout);
-
-            int b;
-            while ((b = bin.read()) != -1) { //reads from the BTS-DNA
-                bout.write(b);               //writes to the file BTS-DṆA(copy)
+           byte[] buf=new byte[1024];
+            int readValues;
+            while ((readValues = bin.read(buf,0,1024)) != -1) { //reads from the BTS-DNA
+                bout.write(buf);               //writes to the file BTS-DṆA(copy)
             }
             bout.flush();
         }

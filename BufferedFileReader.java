@@ -23,6 +23,7 @@ public class BufferedFileReader {
             bout = new BufferedOutputStream(fout);
 
             byte[] buf=new byte[1024];
+
             int readValues;
             while ((readValues = bin.read(buf,0,1024)) != -1) { //reads from the BTS-DNA
                 bout.write(buf);               //writes to the file BTS-DṆA(copy)

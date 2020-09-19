@@ -21,15 +21,17 @@ public class BufferedFileReader {
             bin = new BufferedInputStream( fin);
             fout = new FileOutputStream("C:\\Users\\user\\Downloads\\BTS-DNA(copy).mp4");
             bout = new BufferedOutputStream(fout);
-           byte[] buf=new byte[1024];
+
+            byte[] buf=new byte[1024000];
             int readValues;
-            while ((readValues = bin.read(buf,0,1024)) != -1) { //reads from the BTS-DNA
-                bout.write(buf);               //writes to the file BTS-DṆA(copy)
-            }
+            while ((readValues = bin.read(buf,0,buf.length)) != -1) { //reads from the BTS-DNA
+              {
+                  bout.write(buf,0,readValues);//writes to the file BTS-DṆA(copy)
+              }
             bout.flush();
         }
         catch(IOException ex) {
-            System.err.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         //closing all the objects after the process
         finally {

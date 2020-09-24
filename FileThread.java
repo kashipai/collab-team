@@ -1,92 +1,57 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
 
 public class FileThread {
+      public static void myWriter(File f1, String s) throws IOException {
 
-    synchronized static void function1()
-    {
-        Scanner in=new Scanner(System.in);
-        File f1=new File("D:\\file1.txt");
-        try {
-            f1.createNewFile();
-            System.out.println("Enter writeable content:");
-            String content=in.nextLine();
-            myWriter(f1,content);
+         FileWriter fw = null;
+         try {
+             fw = new FileWriter(f1, true);
+             fw.write(s);
+             System.out.println("Writing successful");
+         } catch (IOException e) {
+             e.printStackTrace();
+         } finally {
+             fw.close();
+         }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+     }
 
-    synchronized static void function2()
-    {
-        Scanner in=new Scanner(System.in);
-        File f1=new File("D:\\file2.txt");
-        try {
-            f1.createNewFile();
-            System.out.println("Enter writeable content:");
-            String content=in.nextLine();
-            myWriter(f1,content);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    synchronized static void function3()
-    {
-        Scanner in=new Scanner(System.in);
-        File f1=new File("D:\\file3.txt");
-        try {
-            f1.createNewFile();
-            System.out.println("Enter writeable content:");
-            String content=in.nextLine();
-            myWriter(f1,content);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void myWriter(File f1, String content) throws IOException {
-        FileWriter fw = null;
-        try {
-            fw = new FileWriter(f1);
-            for (int i = 0; i < content.length(); i++)
-                fw.write(content.charAt(i));
-            System.out.println("Writing successful");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            fw.close();
-        }
-    }
-
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        File f1=new File("D:\\file.txt");
+        f1.createNewFile();
         Thread t1=new Thread(){
             @Override
-            public void run ()
+            synchronized public void run ()
             {
-                function1();
+                try {
+                    myWriter(f1,"My name is Vikram Kumar\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
         Thread t2=new Thread(){
             @Override
-            public void run ()
+            synchronized public void run ()
             {
-                function2();
+                try {
+                    myWriter(f1,"I am a worker in Robosoft\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
         Thread t3=new Thread(){
             @Override
-            public void run ()
+            synchronized public void run ()
             {
-                function3();
+                try {
+                    myWriter(f1,"I like coding....Bye....\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
         t1.start();
@@ -94,4 +59,8 @@ public class FileThread {
         t3.start();
 
     }
+
+
+
 }
+

@@ -1,6 +1,7 @@
 package practice;
 
 import java.util.Comparator;
+import java.text.DateFormat;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
@@ -10,11 +11,11 @@ public class Employee
     public String fName;
     public String lName;
     public String city;
-    public String doj;
+    public Date doj;
  
  
     //Parameterized Constructor
-    public Employee(String id, String fname, String lname, String city,String doj)
+    public Employee(String id, String fname, String lname, String city,Date doj)
     {
         this.id = id;
         this.fName = fname;
@@ -40,7 +41,7 @@ public class Employee
     return city;
     }
     
-    public String getdoj() {
+    public Date getdoj() {
     return doj;
     }
  
@@ -83,16 +84,16 @@ public static void main(String[] args) throws Exception
     	 System.out.println("Enter Employee"+i+" city:"); 
     	 String city = sc.next();
     	 System.out.println("Enter Employee"+i+" Date of joining(yyyy-mm-dd):"); 
-    	 String doj = sc.next();
-    	// SimpleDateFormat doj2 = new SimpleDateFormat("dd/MM/yyyy");
-    	 //Date dt = doj2.parse(doj);
+    	 String doj1 = sc.next();
+    	 SimpleDateFormat doj = new SimpleDateFormat("yyyy-mm-dd");
+    	 Date dt = doj.parse(doj1);
     	 
-    	 list.add(new Employee(eId,fname,lname,city,doj));
+    	 list.add(new Employee(eId,fname,lname,city,dt));
      }
      
      System.out.println("Original list");
      System.out.println();
-     System.out.println("Id\t|| Full Name\t\t|| City\t|| Date of joining");
+     System.out.println("Id|| Full Name|| City|| Date of joining");
      System.out.println("----------------------------------------------------------------------------------------------");
      
         for (Employee s : list) 
@@ -105,7 +106,7 @@ public static void main(String[] args) throws Exception
         
         System.out.println("Sorted by Last name");
         System.out.println();
-        System.out.println("Id\t|| Full Name\t|| City\t|| Date of joining");
+        System.out.println("Id|| Full Name|| City|| Date of joining");
         System.out.println("----------------------------------------------------------------------------------------------");
         for (Employee s : list) 
         {
@@ -116,7 +117,7 @@ public static void main(String[] args) throws Exception
         
         System.out.println("Sorted by Date of joining");
         System.out.println();
-        System.out.println("Id\t|| Full Name\t|| City\t|| Date of joining");
+        System.out.println("Id|| Full Name|| City|| Date of joining");
         System.out.println("----------------------------------------------------------------------------------------------");
 
         Collections.sort(list, Employee.eCompDate);

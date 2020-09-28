@@ -13,6 +13,11 @@ class ThreadCounter extends Thread{
 			 }
 			
 			/* 
+			 private ReentrantLock lock;
+			 public ThreadCounter(ReentrantLock lock) {
+			// TODO Auto-generated constructor stub
+	    	this.lock=lock;
+		     }
 			lock.lock();
 	        try {
 	            System.out.println(Thread.currentThread().getName() + " : " + count);
@@ -25,11 +30,6 @@ class ThreadCounter extends Thread{
 	        }*/
 	        
 			/* 
-			 private ReentrantLock lock;
-			 public ThreadCounter(ReentrantLock lock) {
-			// TODO Auto-generated constructor stub
-	    	this.lock=lock;
-		     }
 			 try {
 				if(Thread.holdsLock(this)) {
 					count = count + 1;

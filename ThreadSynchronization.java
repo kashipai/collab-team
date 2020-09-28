@@ -4,13 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class ThreadCounter extends Thread{
 	    static int count = 1; 
-	    private ReentrantLock lock;
-		
-	    public ThreadCounter(ReentrantLock lock) {
-			// TODO Auto-generated constructor stub
-	    	this.lock=lock;
-		}
-	   
+	    private static Object lock = new Object(); 	   
 		public  void run() {
 			
 			synchronized (lock) {
@@ -31,6 +25,11 @@ class ThreadCounter extends Thread{
 	        }*/
 	        
 			/* 
+			 private ReentrantLock lock;
+			 public ThreadCounter(ReentrantLock lock) {
+			// TODO Auto-generated constructor stub
+	    	this.lock=lock;
+		     }
 			 try {
 				if(Thread.holdsLock(this)) {
 					count = count + 1;
@@ -54,16 +53,18 @@ public class ThreadSynchronization {
 
 		public static void main(String[] args) {
 				// TODO Auto-generated method
-			ReentrantLock sharedLock = new ReentrantLock();
+			
 			 ExecutorService executor = Executors.newFixedThreadPool(10);
 			  for(int i = 0; i < 50; i++) {
-				ThreadCounter thread = new ThreadCounter(sharedLock);
+				ThreadCounter thread = new ThreadCounter();
 				executor.execute(thread);
 				
 			  }
 			 executor.shutdown();
 			
-			/*Thread t[] = new Thread [50];
+			/*
+			 ReentrantLock sharedLock = new ReentrantLock();
+			 Thread t[] = new Thread [50];
 			  for(int i = 0; i < 50; i++) {
 					t[i] = new ThreadCounter(sharedLock);
 					t[i].start();

@@ -1,5 +1,6 @@
 package java_ex;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -10,13 +11,13 @@ public class Employee2 {
 	    private String firstName = null;
 	    private String lastName = null;
 	    private int age = -1;
-	    private Date date;
+	    private LocalDate date;
 	 
-	    public Date getDate() {
+	    public LocalDate getDate() {
 			return date;
 		}
 
-		public void setDate(Date date) {
+		public void setDate(LocalDate date) {
 			this.date = date;
 		}
 
@@ -52,7 +53,7 @@ public class Employee2 {
 			this.age = age;
 		}
 
-		public Employee2(int id, String fName, String lName, int age, Date date) {
+		public Employee2(int id, String fName, String lName, int age, LocalDate date) {
 	        this.id = id;
 	        this.firstName = fName;
 	        this.lastName = lName;
@@ -70,10 +71,10 @@ public class Employee2 {
 	    
 	    
 	    public static void main(String[] args) {
-	    	Date d1 = new Date(2000, 11, 21);
-	    	Date d2 = new Date(2005, 12, 13); 
-	    	Date d3 = new Date(2010, 1, 3);
-	    	Date d4 = new Date(2012, 10, 30); 
+	    	LocalDate d1 = LocalDate.of(2000, 11, 21);
+	    	LocalDate d2 = LocalDate.of(2005, 12, 13); 
+	    	LocalDate d3 = LocalDate.of(2010, 1, 3);
+	    	LocalDate d4 = LocalDate.of(2012, 10, 30); 
 	    	
 	    	
 	        Employee2 e1 = new Employee2(1, "A", "h", 34, d1);

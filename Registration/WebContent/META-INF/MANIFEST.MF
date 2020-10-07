@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: C:\Users\HARSHA\Downloads\mysql-connector-java-8.0.21\mysql-connector-java-8.0.21
-

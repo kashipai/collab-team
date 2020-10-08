@@ -26,6 +26,7 @@ public class LocaleAndJNDI extends HttpServlet {
     	DataSource ds = null;
     	Context initContext;
     	Context envContext;
+		Statement stmt;
         try {
         	
 		//using resource bundle to greet in french and display date of birth in french format
@@ -43,6 +44,7 @@ public class LocaleAndJNDI extends HttpServlet {
    
        
         String sql;
+		stmt = conn.createStatement();
         sql = "SELECT * FROM servletexercise.studetails;";
         ResultSet rs = stmt.executeQuery(sql);
             

@@ -126,6 +126,7 @@ public class AccountManager {
     	    		System.out.println("Enter the amount you want to withdraw");
     	    		double withdraw=input.nextDouble();
     	    		((Current)b).withdrawAmount(withdraw);
+			((Current)b).addToHistory("Withdraw: "+withdraw);
     	    		
     	    	}
     	    	else if(b instanceof Savings)
@@ -133,6 +134,7 @@ public class AccountManager {
     	    		System.out.println("Enter the amount you want to withdraw");
     	    		double withdraw=input.nextDouble();
     	    		((Savings)b).withdrawAmount(withdraw);
+			((Savings)b).addToHistory("Withdraw: "+withdraw);
     	    	}
     	    	else if(b instanceof Fixed)
     	    	{
@@ -198,10 +200,10 @@ public class AccountManager {
     	    	{
     	    		System.out.println("Name: "+((Savings)b).getAccountHolderName());
     	    		System.out.println("Account number: "+((Savings)b).getAccountNo());
-    	    		System.out.println("Account Type: "+((Current)b).getClass().getSimpleName());
-    	    		System.out.println("Mobile number: "+((Current)b).getMobNumber());
-    	    		System.out.println("EmailId: "+((Current)b).getMailId());
-    	    		System.out.println("Account number: "+((Current)b).getCurrentBalance());
+    	    		System.out.println("Account Type: "+((Savings)b).getClass().getSimpleName());
+    	    		System.out.println("Mobile number: "+((Savings)b).getMobNumber());
+    	    		System.out.println("EmailId: "+((Savings)b).getMailId());
+    	    		System.out.println("Account number: "+((Savings)b).getCurrentBalance());
     	    	}
     	    	else if(b instanceof Fixed)
     	    	{

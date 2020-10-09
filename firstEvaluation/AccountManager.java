@@ -53,6 +53,7 @@ public class AccountManager {
     map.put(person[i].getAccountNo(),person[i]);
 	i++;
 	System.out.println("Account created successfully");
+	System.out.println("Your account number: "+accountNumber+"\n");	
 	}
 	}
 	
@@ -60,8 +61,10 @@ public class AccountManager {
 	for(Map.Entry<String,BankAccount> entry:map.entrySet()){  
 		int temp=1;
 	
-        String key=entry.getKey();  
-        BankAccount b=entry.getValue();  
+        System.out.println("Enter the account number on which you wish to perform Operation");
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	String number=br.readLine();
+    	BankAccount b= map.get(number);  
         while(temp==1) {
     	    System.out.println("Operations you wish to perform:");
     	    System.out.println("1.Deposit");

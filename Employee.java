@@ -3,6 +3,12 @@ public class Employee {
     private int age;
     private Address addrs;
 
+    public Employee(String name, int age,Address addrs){
+        this.name = name;
+        this.age = age;
+        this.addrs=addrs;
+    }
+
     public String getName() {
         return name;
     }

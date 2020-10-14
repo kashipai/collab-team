@@ -1,11 +1,12 @@
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 
 public class Sample {
     public static void main(String as[]) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-        Employee employee = (Employee)context.getBean("employee");
-        Address address = (Address)context.getBean("address");
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
+        Employee employee = ctx.getBean(Employee.class);
+        Address address = ctx.getBean(Address.class);
         System.out.println("Employee Name : " +employee.getName());
         System.out.println("Employee Age : " +employee.getAge());
        System.out.println("Address : " +employee.getAddrs().getDoorNo());

@@ -1,13 +1,17 @@
 public class Address {
-    private String doorNo;
+    private int doorNo;
     private String street;
     private String area;
-
-    public String getDoorNo() {
+  public Address(int dn, String street, String area){
+      this.doorNo = dn;
+      this.street = street;
+      this.area = area;
+  }
+    public int getDoorNo() {
         return doorNo;
     }
 
-    public void setDoorNo(String doorNo) {
+    public void setDoorNo(int doorNo) {
         this.doorNo = doorNo;
     }
 

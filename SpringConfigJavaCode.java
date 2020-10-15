@@ -6,22 +6,20 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("sneha.springAnnotation")
 public class SpringConfigJavaCode {
-	@Bean(name = "ios") 
+	@Bean
 	public  Os getIos() {
-		return new Ios();
+		return new Ios("ios");
 	}
-	@Bean(name = "android")
+	@Bean
 	public Os getAndroid() {
-		return new Android();
+		return new Android("android");
 	}
 	@Bean(name = "apple")
 	public Phone getApple() {
-		
-		return new Apple("a1");
+		return new Apple(getIos(),"a1");
 	}
 	@Bean(name = "samsung")
-	public Phone getSamsung() {
-		
-		return new Samsung("M21");
+	public Phone getSamsung() {		
+		return new Samsung(getAndroid(),"M21");
 	}
-	}
+}

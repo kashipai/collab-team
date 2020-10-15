@@ -1,10 +1,12 @@
 package sneha.springAnnotation;
-
 public class Android implements Os {
-
-	public String getOs() {
-		// TODO Auto-generated method stub
-		return "android";
+	String os;
+    public Android(String osName) {
+		super();
+		this.os = osName;
 	}
+	public String getOs() {
+			return os;
+		}
 
 }

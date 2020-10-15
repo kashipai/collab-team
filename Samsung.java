@@ -1,14 +1,11 @@
 package sneha.springAnnotation;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 public class Samsung implements Phone {
-	@Autowired  @Qualifier("android")
+
 	Os os;
 	String version;
-	public Samsung( String version) {
-
+	public Samsung(Os os, String version) {
+		this.os = os;
 		this.version = version;
 
 	}

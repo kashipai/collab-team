@@ -1,24 +1,21 @@
-import component.Subtraction;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {ConfigTwo.class})
-@ActiveProfiles("sub")
-public class ConfigTwoTest {
-
+@ContextConfiguration(classes = {DataConfig.class})
+public class DataConfigTest {
     @Autowired
-    private Subtraction subtraction ;
+    private JdbcTemplate jdbcTemplate;
 
     @Test
-    public void setSubtraction (){
-        int sum = subtraction.substractionofTwoNumber(11,5);
-        assertEquals(6,sum);
+    public void dbCreation(){
+        jdbcTemplate.update("CREATE TABLE Person (PersonID int, FirstName varchar(255), LastName varchar(255))");
+        jdbcTemplate.update("INSERT INTO Person VALUES (1,'Max','Planck')");
     }
 }

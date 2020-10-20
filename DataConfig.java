@@ -2,7 +2,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
@@ -35,10 +34,10 @@ public class DataConfig {
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.setResultsMapCaseInsensitive(true);
-        return jdbcTemplate;
-
+    public EmployeeImplDao setEmployee(DataSource dataSource){
+        EmployeeImplDao employeeImplDAO1 = new EmployeeImplDao();
+        employeeImplDAO1.setDataSource(dataSource);
+        return employeeImplDAO1;
+        }
     }
-}
+

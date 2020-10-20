@@ -7,10 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component("BeanTemplate")
-public class StudentJDBCTemplate implements StudentDAO {
+public class StudentJDBCTemplate {
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
-	private Student student;
 	
 	public void setJdbctemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplateObject = jdbcTemplate;
@@ -21,12 +20,12 @@ public class StudentJDBCTemplate implements StudentDAO {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void create(String name, Integer age) {
+	public void create(Student student) {
 		String SQL = "insert into Student (name, age) values (?, ?)";
-		//Object[] obj = {student.getName(),student.getAge()};
+		Object[] obj = {student.getName(),student.getAge()};
 
-		jdbcTemplateObject.update(SQL, name, age);
-		System.out.println("Created Record Name = " + name + " Age = " + age);
+		jdbcTemplateObject.update(SQL, student.getName(),student.getAge());
+		System.out.println("Created Record Name = " + student.getName() + " Age = " + student.getAge());
 		return;
 	}
 
@@ -41,3 +40,4 @@ public class StudentJDBCTemplate implements StudentDAO {
 		return null;
 	}
 }
+

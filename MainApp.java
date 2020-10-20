@@ -13,10 +13,13 @@ public class MainApp {
       StudentJDBCTemplate studentJDBCTemplate = (StudentJDBCTemplate)
          context.getBean("BeanTemplate",StudentJDBCTemplate.class);
       
+      Student student=new Student();
+      student.setName("Student1");
+      student.setAge(23);
+      
       System.out.println("Records Creation:" );
-      studentJDBCTemplate.create("Student1", 11);
-      studentJDBCTemplate.create("student2", 2);
-      studentJDBCTemplate.create("student3", 15);
+      studentJDBCTemplate.create(student);
+   
 
       System.out.println("Records Display:" );
       List<Student> students = studentJDBCTemplate.listStudents();
@@ -28,3 +31,4 @@ public class MainApp {
       }  
    }
 }
+

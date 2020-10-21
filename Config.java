@@ -26,7 +26,7 @@ public class Config
     private Environment env;
     
     @Bean(name = "datasource")
-    public DataSource dataSource() throws Exception
+    public DataSource dataSource()
     {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getRequiredProperty("jdbc.driver"));
@@ -40,15 +40,9 @@ public class Config
     public JdbcTemplate jdbcTemplate(DataSource dataSource)
     {
     	JdbcTemplate template = new JdbcTemplate();
-        template.setDataSource(dataSource);
+        template.setDataSource(dataSource());
         
         return template;   
-    }
-    
-    @Bean(name = "libraryBean")
-    public Library lib()
-    {
-    	return new Library();
     }
   
     @Bean(name = "callback")
@@ -57,22 +51,14 @@ public class Config
     	return new CallbackHandler();
     }
     
-    @Bean
-    public RsExtractor extractor()
-    {
-    	return new RsExtractor();
-    }
-    
-    @Bean
-    public LibraryMapper libMap()
-    {
-    	return new LibraryMapper();
-    }
  
     @Bean
     public LibraryDaoImpl daoBean()
+
     {
-    	return new LibraryDaoImpl();
+    	LibraryDaoImpl daoImp = new LibraryDaoImpl();
+    	daoImp.setDataSource(dataSource());
+    	return daoImp;
     }
 }
 

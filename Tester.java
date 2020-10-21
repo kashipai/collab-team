@@ -23,23 +23,20 @@ public class Tester {
 	public void testRowMap()
 	{
 			int budget = 250;
-			String SQL = "select * from Library where library.cost <="+budget;
-			List <Library> books = temp.query(SQL, libmap);
-			daoObj.bookInBudget(books,budget);
+			daoObj.bookInBudget(budget);
 	}
 	
 	@Test
 	public void testHandler() {
-		 temp.query("select library.bName from Library", callback);
+		 
 		 daoObj.getBooksName(callback);
 	}
 	
 	@Test
 	public void testExtractor()
 	{
-		String sql = "select * from library order by library.bName ASC";
-		List <Library> books = temp.query(sql, extractor);
-		daoObj.alphabeticalArrange(books);
+		
+		daoObj.alphabeticalArrange();
 	}
 
 }

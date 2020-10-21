@@ -13,11 +13,8 @@ public class Tester {
 
 	ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 	
-	JdbcTemplate temp = (JdbcTemplate) context.getBean("jdbcTemplate");
 	CallbackHandler callback = context.getBean(CallbackHandler.class);
 	LibraryDaoImpl daoObj = context.getBean(LibraryDaoImpl.class);
-	LibraryMapper libmap = context.getBean(LibraryMapper.class);
-	RsExtractor extractor = context.getBean(RsExtractor.class);
     
 	@Test
 	public void testRowMap()

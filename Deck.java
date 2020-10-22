@@ -1,0 +1,14 @@
+package secondEvaluation;
+
+public class Deck extends CardCollection {
+
+	public Deck(String type) {
+		super(type);
+
+		for (int suit = 0; suit <= 3; suit++) {
+			for (int rank = 1; rank <= 13; rank++) {
+				addCard(new Card(rank, suit));
+			}
+		}
+	}
+}

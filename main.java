@@ -30,17 +30,8 @@ public class main {
 	                      drawPile.size());
 	    
 	    Eights eights=new Eights();
-	    Player player=new Player("s");
-	    hand.display();
-	    player.play(eights,hand.getCard(0));
-	    player.searchForMatch(card);
-	    player.drawForMatch(eights, card);
-	    player.drawForMatch(eights, card);
-	    eights.isDone();
-	    eights.reshuffle();
-	    eights.drawCard();
-	    eights.nextPlayer(null);
-	    eights.displayState();
+	    eights.playGame();
+	    
 	    
 	    
 	}

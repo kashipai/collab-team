@@ -6,12 +6,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Contact Manager Home</title>
+        <title>Employee Manager Home</title>
     </head>
     <body>
         <div align="center">
             <h1>Contact List</h1>
-            <h3><a href="/EmployeeManager/newContact">New Contact</a></h3>
+            <h3><a href="/EmployeeManager/newContact">New Employee</a></h3>
             <table border="1">
                 <th>No</th>
                 <th>Name</th>

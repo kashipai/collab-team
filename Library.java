@@ -10,8 +10,11 @@ public class Library
 	@Column(name = "id")
 	int id;
 	
-	String bName;
-	String bAuthor;
+	String name;
+	
+	@Column(name = "author")
+	String author;
+	
 	int cost;
 
 	public int getId() {
@@ -22,20 +25,20 @@ public class Library
 		this.id = isbn;
 	}
 
-	public String getbName() {
-		return bName;
+	public String getName() {
+		return name;
 	}
 
-	public void setbName(String bName) {
-		this.bName = bName;
+	public void setName(String bName) {
+		this.name = bName;
 	}
 
-	public String getbAuthor() {
-		return bAuthor;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setbAuthor(String bAuthor) {
-		this.bAuthor = bAuthor;
+	public void setAuthor(String bAuthor) {
+		this.author = bAuthor;
 	}
 
 	public int getCost() {
@@ -51,8 +54,8 @@ public class Library
 	public Library(int isbn, String bName, String bAuthor, int cost)
 	{
 		this.id = isbn;
-		this.bName = bName;
-		this.bAuthor = bAuthor;
+		this.name = bName;
+		this.author = bAuthor;
 		this.cost = cost;
 	}
 	

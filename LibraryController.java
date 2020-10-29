@@ -19,11 +19,12 @@ import com.example.libraryRest.Dao.LibraryRepository;
 import com.example.libraryRest.Model.Library;
 
 @RestController
-public class LibraryController 
+public class LibraryController
 {
 	
 	    @Autowired
 	    private LibraryRepository repo; 
+	   
 	  
 	    // Home Page 
 	    @GetMapping("/") 
@@ -41,7 +42,7 @@ public class LibraryController
 	        return repo.findAll(); 
 	    } 
 	  
-	    @GetMapping("/company/{id}") 
+	    @GetMapping("/library/{id}") 
 	    public Library getBookById( 
 	        @PathVariable(value = "id") int id) 
 	    { 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="center">
+	    <div sec:authorize="isAuthenticated()">
+             Welcome <b><span sec:authentication="name">Username</span></b>
+             &nbsp;
+             <i><span sec:authentication="principal.authorities">Roles</span>>
+             <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Logout" />
+             </form>
+	    </div>
+		<h1>Employee Manager</h1>
+		<a href="/new">Create New Employee</a> <br />
+		<br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Employee Id</th>
+					<th>Name</th>
+					<th>phone</th>
+					<th>Location</th>
+					<th sec:authorize = "hasAnyAuthority('ADMIN')">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="empl : ${Employee}">
+					<td th:text="${empl.empid}">empid</td>
+					<td th:text="${empl.name}">name</td>
+					<td th:number="${empl.phone}">phone</td>
+					<td th:text="${empl.location}">location</td>
+					<td sec:authorize = "hasAnyAuthority('ADMIN')">
+					    <a th:href="@{'/edit/' + ${employee.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${employee.id}}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

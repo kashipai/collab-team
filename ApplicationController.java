@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.springSecurity.Model.Person;
 import com.example.springSecurity.Repository.PersonRepo;
 
-@RestController
+@Controller
 public class ApplicationController 
 {
 	@Autowired
